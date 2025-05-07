@@ -41,10 +41,11 @@ jobs:
         run: npm install -g vercel
 
       - name: Link Vercel Project
-        run: vercel link --yes --token $VERCEL_TOKEN
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: vercel link --yes --token $VERCEL_TOKEN
 
       - name: Deploy to Vercel
         env:
