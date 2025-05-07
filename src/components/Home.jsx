@@ -11,7 +11,7 @@ function Home() {
 
   async function initNewBingoGame() {
     try {
-      axios.post(`${import.meta.env.VITE_API_URL}/games/start`);
+      const response = await axios.post(`${backendUrl}/games/start`);
       const { id } = response.data;
       navigate(`/game/${id}`);
     } catch (error) {
