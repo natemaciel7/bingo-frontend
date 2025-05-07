@@ -52,4 +52,4 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
           echo "Iniciando deploy na Vercel..."
-          vercel --prod --yes --token $VERCEL_TOKEN
+          vercel deploy --prod --yes --token $VERCEL_TOKEN
