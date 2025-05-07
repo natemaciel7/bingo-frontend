@@ -1,8 +1,8 @@
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-import '../styles/App.css';
-import bingoLogo from '../assets/bingo-icon.png'
+import "../styles/App.css";
+import bingoLogo from "../assets/bingo-icon.png";
 
 function Home() {
   const year = new Date().getFullYear();
@@ -11,7 +11,7 @@ function Home() {
 
   async function initNewBingoGame() {
     try {
-      const response = await axios.post(`${backendUrl}/games/start`);
+      axios.post(`${import.meta.env.VITE_API_URL}/games/start`);
       const { id } = response.data;
       navigate(`/game/${id}`);
     } catch (error) {
@@ -27,15 +27,13 @@ function Home() {
       </div>
       <h1>Bingo Driven</h1>
       <div className="card">
-        <button onClick={initNewBingoGame}>
-          Iniciar novo jogo!
-        </button>
+        <button onClick={initNewBingoGame}>Iniciar novo jogo!</button>
       </div>
       <p className="read-the-docs">
         <span>{year}</span> - Bingo Driven
       </p>
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;
