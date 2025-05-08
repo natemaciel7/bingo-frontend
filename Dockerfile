@@ -5,10 +5,10 @@ WORKDIR /app
 
 COPY . .
 
-ARG VITE_BACKEND
+ARG VITE_API_URL
+ENV VITE_API_URL=$VITE_API_URL
 
-
-RUN echo "VITE_BACKEND=${VITE_BACKEND}" > .env
+RUN echo "VITE_API_URL=${VITE_API_URL}" > .env
 
 RUN npm install
 RUN npm run build
