@@ -1,13 +1,10 @@
 name: Deploy to Vercel and Docker
-
 on:
   push:
     branches:
-      - master
-
+      - main
 jobs:
-  docker-publish:
-    name: 🔨 Publicar imagem no Docker Hub
+  publish-docker-image:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -27,27 +24,24 @@ jobs:
         with:
           context: .
           push: true
-          tags: natemaciel/bingo-frontend:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/bingo-frontend:latest
 
-  deploy-vercel:
-    name: 🚀 Deploy na Vercel
-    needs: docker-publish
+  CD-DeployToVercel:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Install Vercel CLI
-        run: npm install -g vercel
-
-      - name: Link Vercel Project
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+      - name: Install dependencies
+        run: npm install
+      - name: Build the project
+        run: npm run build
+      - name: Deploy to Vercel
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: vercel link --yes --token $VERCEL_TOKEN
-
-      - name: Deploy to Vercel
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: vercel deploy --prod --yes --token ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          echo "Deploying to Vercel..."
+          npx vercel --prod --token $VERCEL_TOKEN
