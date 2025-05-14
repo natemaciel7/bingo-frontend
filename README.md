@@ -2,9 +2,7 @@
 
 Aplicação React com Vite para gerenciamento visual de jogos de bingo.
 
----
-
-## Tecnologias
+# Tecnologias
 
 - React
 - Vite
@@ -13,22 +11,35 @@ Aplicação React com Vite para gerenciamento visual de jogos de bingo.
 - Docker
 - Vercel (CD automático)
 
----
-
-## Como rodar com Docker
+# Como rodar com Docker
 
 ```bash
 docker-compose up --build
-
 ```
 
-# Como rodar localmente (sem Docker)
+> O build do projeto usa a variável `VITE_BACKEND` para apontar para a URL da API.  
+> Essa variável pode ser definida no `docker-compose.yml` como argumento de build:
 
+```yaml
+args:
+  VITE_BACKEND: http://localhost:5000
+```
+
+## Como rodar localmente (sem Docker)
+
+```bash
 npm install
 npm run dev
+```
 
-(arq .env com: VITE_BACKEND=http://localhost:5000)
+> Certifique-se de criar um arquivo `.env` com a variável correta:
 
-# Site em produção
+```env
+VITE_BACKEND=http://localhost:5000
+```
 
-Acesse: https://front-end-fawn-two.vercel.app
+---
+
+## Site em produção
+
+- Acesse: https://front-end-fawn-two.vercel.app
