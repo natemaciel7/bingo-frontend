@@ -5,6 +5,6 @@ export default defineConfig({
   plugins: [react()],
   define: {
     // eslint-disable-next-line no-undef
-    "import.meta.env.VITE_API_URL": JSON.stringify(process.env.VITE_API_URL),
+    "import.meta.env.VITE_BACKEND": JSON.stringify(process.env.VITE_BACKEND),
   },
 });

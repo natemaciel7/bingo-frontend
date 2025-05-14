@@ -1,8 +1,34 @@
-# React + Vite
+# Bingo Driven - Front-end
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação React com Vite para gerenciamento visual de jogos de bingo.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologias
+
+- React
+- Vite
+- TypeScript
+- Axios
+- Docker
+- Vercel (CD automático)
+
+---
+
+## Como rodar com Docker
+
+```bash
+docker-compose up --build
+
+```
+
+# Como rodar localmente (sem Docker)
+
+npm install
+npm run dev
+
+(arq .env com: VITE_BACKEND=http://localhost:5000)
+
+# Site em produção
+
+Acesse: https://front-end-fawn-two.vercel.app
